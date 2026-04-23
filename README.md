@@ -1,208 +1,174 @@
----
+Voici une **2ᵉ version plus professionnelle et plus “portfolio / entreprise”** de ton `README.md` 👇 (plus clean, plus structuré, style data engineer)
 
-# 📊 Projet : Stockage des Données Bancaires – SQL Analytics
+```markdown id="readme_v2_banking"
+# 🏦 FinanceCore – Banking Data Analytics Project
 
-## 📁 Description du projet
+## 📌 Overview
 
-Ce projet a pour objectif de construire une base de données analytique à partir de données bancaires nettoyées (**FinanceCore**), en utilisant **SQL**, **Python** et **Jupyter Notebook**.
+This project is a **data analytics pipeline for banking data**, built using **SQL, Python, and PostgreSQL**.  
+It transforms raw cleaned banking data into a **structured analytical database** optimized for reporting and decision-making.
 
-Il permet :
-
-* la création du schéma relationnel
-* l’optimisation des performances avec des index
-* la création de vues analytiques
-* l’analyse des données via Python
-* la préparation pour un futur Data Warehouse ou Dashboard décisionnel
+The project simulates a real-world **Data Engineering & Analytics workflow**, from data modeling to performance optimization and exploratory analysis.
 
 ---
 
-# 📂 Structure du projet
+## 🎯 Objectives
+
+- Design a **relational analytical database**
+- Implement a **normalized SQL schema**
+- Optimize queries using **indexes**
+- Build **analytical SQL views**
+- Perform **data exploration with Python**
+- Prepare the foundation for a **Data Warehouse / BI dashboard**
+
+---
+
+## 🧱 Architecture
 
 ```
-STOCKAGE DES DONNÉES BANCAIRES/
+
+Raw Data (CSV)
+↓
+Data Cleaning (FinanceCore dataset)
+↓
+PostgreSQL Database (SQL Schema)
+↓
+Optimization Layer (Indexes)
+↓
+Analytical Layer (SQL Views)
+↓
+Python Analysis (Jupyter Notebook)
+↓
+Future: Dashboard (Streamlit / Power BI)
+
+```
+
+---
+
+## 📂 Project Structure
+
+```
+
+STOCKAGE-DONNEES-BANCAIRES/
 │
 ├── data/
 │   └── financecore_clean.csv
 │
 ├── env/
+│   └── (virtual environment)
 │
 ├── sql/
-│   ├── schema.sql
-│   ├── index.sql
-│   └── views.sql
+│   ├── schema.sql        # Database structure (tables + relations)
+│   ├── index.sql         # Performance optimization indexes
+│   └── views.sql         # Analytical SQL views
 │
 ├── src/
 │   └── banking-sql-analytics.ipynb
 │
-├── .env
+├── .env                  # Database credentials (hidden)
 └── .gitignore
-```
+
+````
 
 ---
 
-# 📁 Description des dossiers
+## 🗄️ Database Design
 
-## 📁 data/
+### 📌 Core Tables
 
-Contient les données sources utilisées dans le projet.
-
-**financecore_clean.csv**
-
-Dataset nettoyé contenant :
-
-* transactions bancaires
-* clients
-* comptes
-* agences
-* segments
-* produits
-* dimension temps
-
-Ces données servent à alimenter la base analytique.
+- **clients** → customer information  
+- **comptes** → bank accounts  
+- **transactions** → financial operations  
+- **agences** → bank branches  
+- **produits** → banking products  
+- **segments** → customer segmentation  
+- **temps** → time dimension  
 
 ---
 
-## 📁 env/
+## 🧠 SQL Layer
 
-Environnement virtuel Python contenant les dépendances nécessaires au projet :
-
-Exemple :
-
-```
-pandas
-sqlalchemy
-psycopg2
-matplotlib
-streamlit
-```
-
-Permet d’isoler les bibliothèques du projet.
+### 📄 Schema Layer (`schema.sql`)
+Defines:
+- Primary Keys
+- Foreign Keys
+- Relationships between entities
+- Normalized structure
 
 ---
 
-## 📁 sql/
+### ⚡ Performance Layer (`index.sql`)
+Improves query speed using indexing:
 
-Contient les scripts SQL nécessaires à la création et l’optimisation de la base de données.
-
-### 📄 schema.sql
-
-Script utilisé pour :
-
-* créer les tables
-* définir les clés primaires
-* définir les clés étrangères
-* structurer le modèle relationnel analytique
-
-Tables principales :
-
-* agences
-* clients
-* comptes
-* transactions
-* produits
-* segments
-* temps
+- transaction date index
+- client-based indexing
+- account-based optimization
 
 ---
 
-### 📄 index.sql
+### 📊 Analytical Layer (`views.sql`)
+Pre-built SQL views for business analysis:
 
-Script utilisé pour améliorer les performances :
-
-* accélération des requêtes
-* optimisation des jointures
-* amélioration du temps de réponse
-
-Exemple :
-
-```
-CREATE INDEX idx_transactions_date
-ON transactions(date_transaction);
-```
+- Monthly transaction trends
+- Client segmentation analysis
+- Agency performance metrics
+- Product usage insights
 
 ---
 
-### 📄 views.sql
+## 🐍 Python Analysis Layer
 
-Contient des vues analytiques pour simplifier l’analyse des données.
+### 📄 Notebook: `banking-sql-analytics.ipynb`
 
-Exemples :
-
-* évolution mensuelle des transactions
-* analyse par segment client
-* performance par agence
-* analyse par produit bancaire
-
-Objectif :
-
-faciliter les requêtes décisionnelles sans écrire de SQL complexe.
+Capabilities:
+- Database connection (SQLAlchemy)
+- SQL query execution
+- Data aggregation & joins
+- Analytical insights
+- Visualization (Matplotlib / Pandas)
 
 ---
 
-## 📁 src/
+## 🔐 Environment Configuration
 
-Contient le notebook principal d’analyse.
+Sensitive credentials are stored in `.env`:
 
-### 📄 banking-sql-analytics.ipynb
-
-Ce notebook permet :
-
-* connexion à PostgreSQL avec SQLAlchemy
-* exécution des requêtes SQL
-* exploration des données
-* jointures analytiques
-* visualisation des résultats
-
-Technologies utilisées :
-
-* Python
-* Pandas
-* SQLAlchemy
-* PostgreSQL
+```env id="env_config"
+DB_HOST=localhost
+DB_NAME=financecore_db
+DB_USER=postgres
+DB_PASSWORD=********
+DB_PORT=5432
+````
 
 ---
 
-## 📄 .env
+## ⚙️ Technologies Used
 
-Contient les variables sensibles de connexion à la base :
-
-```
-DB_HOST=
-DB_NAME=
-DB_USER=
-DB_PASSWORD=
-DB_PORT=
-```
-
-Permet de sécuriser les informations confidentielles.
+* 🐍 Python (Pandas, SQLAlchemy)
+* 🗄️ PostgreSQL
+* 📊 SQL (DDL + DML + Views)
+* 📓 Jupyter Notebook
+* 📈 Matplotlib
+* 🔐 dotenv
 
 ---
 
-## 📄 .gitignore
+## 📈 Key Features
 
-Permet d’exclure du dépôt Git :
-
-```
-env/
-.env
-__pycache__/
-*.pyc
-```
-
-Protège les fichiers sensibles et inutiles.
+✔ Relational database design
+✔ SQL optimization (indexes)
+✔ Analytical SQL views
+✔ Data exploration pipeline
+✔ Reproducible notebook analysis
+✔ BI-ready structure
 
 ---
 
-# 🎯 Objectifs du projet
 
-Ce projet permet de :
 
-✅ structurer des données bancaires propres
-✅ créer une base SQL analytique
-✅ optimiser les performances avec des index
-✅ créer des vues analytiques
-✅ analyser les données avec Python
-✅ préparer la construction d’un Data Warehouse
+## 👨‍💻 Author
+Manal Bessar
 
 ---
 
