@@ -1,5 +1,5 @@
 
-```markdown id="readme_v2_banking"```
+
 # 🏦 FinanceCore – Banking Data Analytics Project
 
 ## 📌 Overview
