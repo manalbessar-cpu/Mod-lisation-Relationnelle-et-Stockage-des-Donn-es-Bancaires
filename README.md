@@ -1,6 +1,5 @@
-Voici une **2ᵉ version plus professionnelle et plus “portfolio / entreprise”** de ton `README.md` 👇 (plus clean, plus structuré, style data engineer)
 
-```markdown id="readme_v2_banking"
+```markdown id="readme_v2_banking"```
 # 🏦 FinanceCore – Banking Data Analytics Project
 
 ## 📌 Overview
